@@ -2,8 +2,6 @@ const express = require("express");
 const helmet = require("helmet");
 const config = require("config");
 
-const systemInfo = require("./systeminfo");
-
 const app = express();
 app.use(helmet());
 
@@ -15,10 +13,12 @@ if (app.get("env") === "development") {
   console.log("NODE ENV =========> ", app.get("env"));
 }
 
-app.get("/api", (ree, res, next) => {
-  res.send(systemInfo());
-  res.end();
+app.use((req, res, next) => {
+  console.log("validating user .....");
+  next();
 });
+
+require("./routes")(app);
 
 const port = process.env.PORT || 9080;
 app.listen(port, () => console.log("server start listening on ...", port));
