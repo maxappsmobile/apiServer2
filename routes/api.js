@@ -2,7 +2,7 @@ const systemInfo = require("../systeminfo");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (ree, res, next) => {
+router.get("/", (req, res, next) => {
   res.send(systemInfo());
   res.end();
 });
