@@ -10,7 +10,6 @@ console.log("name of the project ========>", config.get("env"));
 if (app.get("env") === "development") {
   console.log("PORT =========> ", process.env.PORT);
   console.log("NODE ENV =========> ", process.env.NODE_ENV);
-  console.log("NODE ENV =========> ", app.get("env"));
 }
 
 app.use((req, res, next) => {
